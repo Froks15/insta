@@ -70,7 +70,7 @@ exports.signIn = (req, res) => {
  */
 
 exports.register = (req, res) => {
-    const { email, password } = req.body
+    const { name, email, password } = req.body
     bcrypt.genSalt(saltRounds, (err, salt) => {
         if (err) {
             return res.status(400).send('genSalt error')
@@ -80,6 +80,7 @@ exports.register = (req, res) => {
                 return res.status(400).send('brcypt hash error')
             }
             let data = {
+                name,
                 email,
                 password: hash,
             }
