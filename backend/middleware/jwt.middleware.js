@@ -11,6 +11,7 @@ exports.jwtMiddleware = (req, res, next) => {
         if (err) {
           return res.sendStatus(403)
         } else {
+          req.user = data.user
           next()
         }
       })
